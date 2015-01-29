@@ -1,0 +1,93 @@
+server
+{
+    listen 80;    
+    server_name 	.siteadresi 
+    access_log /var/log/nginx/siteadresi.access.log;
+ 
+    #access_log off; 
+    root /var/www/siteadresi/;
+ 
+    index index.php index.html index.htm;
+ 
+location /yeni {
+rewrite ^/yeni-porno-videolar.html$ /new.php;
+rewrite ^/yeni-porno-videolar-([0-9]+).html /new.php?page=$1;
+}
+location /populer {
+rewrite ^/populer-porno-videolar.html$ /popular.php;
+rewrite ^/populer-porno-videolar-([0-9]+).html /popular.php?page=$1;
+}
+location /rastgele {
+rewrite ^/rastgele-porno-videolar.html$ /rand.php;
+rewrite ^/rastgele-porno-videolar-([0-9]+).html /rand.php?page=$1;
+}
+location = /contact.html {
+rewrite ^(.*)$ /contact.php;
+}
+location = /yorumlar.html {
+rewrite ^(.*)$ /comment.php;
+}
+location = /rss.xml {
+rewrite ^(.*)$ /map/rss.php;
+}
+location = /sitemap.xml {
+rewrite ^(.*)$ /map/sitemap.php;
+}
+location = /vsitemap.xml {
+rewrite ^(.*)$ /map/sitemap.php;
+}
+location = /etimap.xml {
+rewrite ^(.*)$ /map/etimap.php;
+}
+location /etikmap {
+rewrite ^/etikmap\-(.*)\.xml$ /map/etimap.php?p=$1;
+}
+location = /resimmap.xml {
+rewrite ^(.*)$ /map/resimmap.php;
+}
+location = /mobilesitemap.xml {
+rewrite ^(.*)$ /map/mobilesitemap.php;
+}
+location = /index.xml {
+rewrite ^(.*)$ /map/index.php;
+}
+location = /404.html {
+rewrite ^(.*)$ /404.php;
+}
+location /yorumlar {
+rewrite ^/yorumlar-([0-9]+).html /comment.php?page=$1;
+}
+location /porn {
+rewrite ^/porn-comments-([0-9]+).html /comment.php?page=$1;
+}
+location /kanal {
+rewrite ^/kanal/(.*)-([0-9]+).html /category.php?seo=$1&page=$2;
+rewrite ^/kanal/(.*).html /category.php?seo=$1;
+}
+location /porno {
+rewrite ^/porno/(.*).html /watch.php?seo=$1;
+}
+location /videolar {
+rewrite ^/videolar/(.*).html /tags.php?seo=$1;
+}
+location /pornoizle {
+rewrite ^/pornoizle\-(.*)\.mp4$ /lib/izle.php?id=$1 break;
+} 
+    # catch all
+    error_page 404 /index.php;
+ 
+    # use fastcgi for all php files
+    location ~ \.php$
+    {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /var/www/siteadresi/$fastcgi_script_name;
+        include fastcgi_params;
+    }
+ 
+    # deny access to apache .htaccess files
+    location ~ /\.ht
+    {
+        deny all;
+    }
+}

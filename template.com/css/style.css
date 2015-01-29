@@ -1,0 +1,551 @@
+* {
+	margin:0;
+	padding:0
+}
+textarea, input, select {
+	font-family:"Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif
+}
+body {
+ /*	background-color:#FC6C85; */
+	background: url(../img/arka.jpg) no-repeat fixed 100% 100%;
+	font-family:"Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif
+}
+li {
+	list-style:none
+}
+a {
+	text-decoration:none
+}
+img {
+	border:0
+}
+.clear {
+	clear:both
+}
+#topbar {
+	width:900px;
+	margin:0 auto;
+	height:40px;
+	font-size:14px
+}
+#topbar h2 {
+	float:left;
+	font-size:13px;
+	font-weight:normal;
+	color:#a0522d;
+	margin-top:12px
+}
+#porn_search {
+	float:right;
+	margin-top:8px
+}
+.porn_search_input {
+	padding:4px;
+	border:0;
+	width:200px;
+	border-radius:2px
+}
+.porn_search_submit {
+	padding:4px;
+	border:0;
+	background:#FC6C85;
+	color:#a0522d;
+	cursor:pointer;
+	border-radius:2px
+}
+.porn_search_submit:hover {
+	background:#F03
+}
+#header {
+	width:900px;
+	margin:0 auto
+}
+#logo {
+	margin-top:16px;
+	width:177px
+}
+#topmenu {
+	background:url(../img/seperator.png)no-repeat top left;
+	float:right
+}
+#topmenu .menu_li {
+	float:left
+}
+#topmenu .menu_li:hover {
+	background-image:url(../img/menu_hover_bg.png)
+}
+#topmenu .menu_li ul {
+	position:absolute;
+	width:243px;
+	background:#a0522d
+}
+.hidden {
+	display:none
+}
+.menu_li:hover>.hidden {
+	display:block;
+	z-index:999;
+	border-left:1px solid #555
+}
+#topmenu .menu_li ul li a {
+	color:#000;
+	font-size:11px;
+	display:block;
+	padding:5px;
+	background:#a0522d;
+	border-bottom:1px solid #333;
+	border-top:1px solid #555;
+	width:110px;
+	float:left;
+	border-right:1px solid #555
+}
+#topmenu .menu_li ul li a:hover {
+	background:#333
+}
+#topmenu .menu_li .menu_a {
+	background:url(../img/seperator.png)no-repeat top right;
+	color:#a0522d;
+	padding-top:31px;
+	padding-bottom:30px;
+	padding-left:13px;
+	padding-right:13px;
+	display:block;
+	font-size:14px;
+	text-shadow:1px 1px 1px #a0522d
+}
+#mainblok {
+	margin:0 auto;
+	width:900px;
+	margin-top:10px
+}
+#leftblok {
+	float:left;
+	width:160px
+}
+#leftblok h2 {
+	color:#a0522d;
+	font-size:14px;
+	padding:4px;
+	background:#FC6C85;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px
+}
+#left_categories {
+	background:#333
+}
+#left_categories a {
+	color:#000;
+	font-size:13px;
+	padding:5px;
+	background:#a0522d;
+	display:block;
+	border-bottom:1px solid #000;
+	border-top:1px solid #a0522d;
+	margin-bottom:1px;
+	padding-left:10px
+}
+#left_categories a:hover {
+	background:#FC6C85
+}
+#rightblok {
+	float:right;
+	width:728px
+}
+.video_list_blok {
+	background:#B6B6B4;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px
+}
+#rightblok h2 {
+	color:#000;
+	font-size:14px;
+	padding:4px;
+	background:#FC6C85;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px
+}
+.porn_video {
+	float:left;
+	padding:4px;
+	background:#a0522d;
+	margin:4px;
+	width:166px;
+	border-radius:3px
+}
+.porn_video:hover {
+	background:#a0522d
+}
+.porn_video img {
+	width:166px;
+	height:125px
+}
+.porn_video_link {
+	display:block;
+	color:#000;
+	font-size:12px;
+	margin-top:5px;
+	margin-bottom:5px;
+	display:block;
+	height:30px
+}
+.porn_video_link:hover {
+	color:#ec005e
+}
+.porn_wievs {
+	position:absolute;
+	background-image:url(../img/wievs_bg.png);
+	width:70px;
+	color:#a0522d;
+	padding:4px;
+	font-size:11px;
+	text-align:center
+}
+.porn_time {
+	float:left;
+	color:#FC6C85;
+	font-size:11px
+}
+.porn_like {
+	float:right;
+	color:#000;
+	font-size:11px;
+	background-image:url(../img/like.png);
+	background-repeat:no-repeat;
+	padding-left:15px
+}
+.ad_slot1 {
+	margin-top:5px
+}
+#footer {
+	background-image:url(../img/footer.png);
+	height:91px;
+	margin-top:10px
+}
+.footer_div {
+	width:900px;
+	margin:0 auto
+}
+.footer_logo {
+	margin-top:18px;
+	float:right
+}
+.footer_div p {
+	color:#000;
+	float:left;
+	margin-top:10px;
+	font-size:14px
+}
+#pagination {
+	margin-top:10px
+}
+#pagination a {
+	background:#a0522d;
+	padding:3px 8px 3px 8px;
+	border-radius:4px;
+	color:#a0522d;
+	float:left;
+	margin-right:3px;
+	font-size:13px
+}
+#pagination a:hover {
+	background:#F03
+}
+#pagination #active {
+	background:#a0522d
+}
+#porn_tag {
+	margin-top:100px;
+	width:880px;
+	margin:0 auto;
+	padding:10px;
+	background:#a0522d;
+	margin-top:10px;
+	border-radius:5px
+}
+#porn_tag a {
+	font-size:12px;
+	padding:4px 10px 4px 10px;
+	background:#a0522d;
+	color:#000;
+	border-radius:4px;
+	margin:3px;
+	display:block;
+	float:left
+}
+#porn_tag a:hover {
+	background:#a0522d
+}
+#contact {
+	padding:10px;
+	float:left
+}
+#contact li span {
+	float:left;
+	display:block;
+	width:200px;
+	padding-top:2px;
+	color:#a0522d;
+	text-shadow:1px 1px 1px #000
+}
+#contact li {
+	margin-bottom:7px
+}
+.top7 {
+	margin-top:7px
+}
+.contact-input {
+	width:494px;
+	border:0;
+	padding:6px;
+	background:#ccc;
+	border-radius:3px
+}
+.contact-secure {
+	width:396px;
+	border:0;
+	padding:6px;
+	background:#ccc;
+	border-radius:3px;
+	float:left
+}
+.captcha {
+	float:left;
+	margin-left:10px;
+	border-radius:3px
+}
+.contact-text {
+	padding:5px;
+	background:#888;
+	border-radius:3px;
+	margin:0;
+	border:0;
+	width:495px;
+	height:150px
+}
+.contact-submit {
+	padding:8px;
+	border-radius:3px;
+	background:#a0522d;
+	border:0;
+	color:#000;
+	cursor:pointer
+}
+.contact-submit:hover {
+	background:#a0522d
+}
+#comments {
+	padding:5px
+}
+.comment_blok {
+	padding:5px;
+	background-color:#a0522d;
+	border-radius:3px;
+	margin-bottom:5px
+}
+.comment_image {
+	float:left;
+	margin-right:10px
+}
+.comment_image img {
+	width:80px;
+	height:80px;
+	padding:3px;
+	background:#ccc
+}
+.comment_user {
+	float:left;
+	color:#999;
+	font-size:13px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+	border-bottom:1px dashed #333;
+	width:610px
+}
+.comment_user span {
+	color:#FC6C85
+}
+.comment_cm {
+	font-size:14px;
+	color:#666
+}
+.comment_cm a {
+	font-size:14px;
+	color:#666
+}
+.comment_cm a:hover {
+	text-decoration:underline;
+	color:#555
+}
+.yuz {
+	width:100%
+}
+.warning {
+	padding:5px;
+	color:#a0522d;
+	font-size:14px;
+	font-weight:bold
+}
+#watch {
+	padding:5px
+}
+.none {
+	display:none
+}
+.contact-succes {
+	padding:5px;
+	background:#a0522d;
+	border-radius:5px;
+	margin-bottom:5px;
+	color:#000;
+	font-size:13px
+}
+.contact-success {
+	padding:5px;
+	background:#0c0;
+	border-radius:5px;
+	margin-bottom:5px;
+	color:#a0522d;
+	font-size:13px
+}
+.watch_blok {
+	padding:5px;
+	background:#a0522d;
+	border-radius:4px;
+	margin:10px 0 10px 0
+}
+#like {
+	background:url(../img/wlike.png);
+	display:block;
+	width:31px;
+	height:33px;
+	float:left
+}
+#like_s {
+	float:left;
+	font-weight:bold;
+	font-size:20px;
+	margin-left:10px;
+	padding:2px;
+	background:#000;
+	border-radius:4px;
+	padding-right:15px;
+	padding-left:15px;
+	padding-bottom:4px;
+	margin-top:1px;
+	width:60px;
+	text-align:center
+}
+.facebook_share {
+	display:block;
+	float:left;
+	background-image:url(../img/facebook.jpg);
+	width:103px;
+	height:35px;
+	margin-left:10px
+}
+.video_download {
+	display:block;
+	float:left;
+	background-image:url(../img/download.png);
+	width:103px;
+	height:35px;
+	margin-left:10px
+}
+.video_embed {
+	display:block;
+	float:left;
+	background-image:url(../img/embed.png);
+	width:103px;
+	height:35px;
+	margin-left:10px
+}
+.repost {
+	float:left;
+	height:24px;
+	background:#000;
+	border-radius:4px;
+	text-align:center;
+	color:#f00;
+	padding:4px;
+	padding-top:6px;
+	font-weight:bold;
+	margin-left:10px;
+	width:340px
+}
+#a-active {
+	background:#555!important
+}
+.top-10 {
+	margin-top:10px
+}
+.ad_slot2 {
+	margin-bottom:10px
+}
+#reklamkapat {
+	z-index:999999;
+	background:#F03;
+	display:block;
+	border-radius:4px;
+	padding:6px;
+	color:#a0522d;
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:5px
+}
+#reklamkapat:hover {
+	background:#555
+}
+.ad_slot5 {
+	margin-top:10px
+}
+#solkayan {
+	position:fixed;
+	top:0;
+	left:0
+}
+#sagkayan {
+	position:fixed;
+	top:0;
+	right:0
+}
+#rssx {
+	display:block;
+	width:25px;
+	height:25px;
+	background-image:url(../img/rss.jpg);
+	float:right;
+	margin-top:8px;
+	margin-left:4px
+}
+.gizli {
+	display:none
+}
+.online_sayac {
+	float:right;
+	margin-top:1px
+}
+#dost_siteler #dost_ic {
+	width:900px;
+	margin:0 auto;
+	color:#666;
+	margin-bottom:10px;
+	font-size:13px
+}
+#dost_ic a {
+	color:#09f;
+	font-size:13px
+}
+#dost_ic a:hover {
+	text-decoration:underline
+}
+.siyah {
+	color:#a0522d;
+	font-size:0
+}
+.jk {
+	color:#a0522d
+}
+.jk:hover {
+	color:#FC6C85
+}

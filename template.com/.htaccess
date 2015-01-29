@@ -1,0 +1,200 @@
+# Apache configuration file
+# httpd.apache.org/docs/2.2/mod/quickreference.html
+
+# Note .htaccess files are an overhead, this logic should be in your Apache
+# config if possible: httpd.apache.org/docs/2.2/howto/htaccess.html
+
+# Techniques in here adapted from all over, including:
+#   Kroc Camen: camendesign.com/.htaccess
+#   perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/
+#   Sample .htaccess file of CMS MODx: modxcms.com
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+# Options +SymLinksIfOwnerMatch
+  RewriteEngine On
+# RewriteBase /
+  RewriteRule ^yeni-porno-videolar.html$ new.php
+  RewriteRule ^populer-porno-videolar.html$ popular.php
+  RewriteRule ^rastgele-porno-videolar.html$ rand.php
+  RewriteRule ^contact.html$ contact.php
+  RewriteRule ^yorumlar.html$ comment.php
+  RewriteRule ^rss.xml$ map/rss.php
+  RewriteRule ^sitemap.xml$ map/sitemap.php
+  RewriteRule ^vsitemap.xml$ map/sitemap.php
+  RewriteRule ^etimap.xml$ map/etimap.php
+  RewriteRule ^etikmap\-(.*)\.xml$ map/etimap.php?p=$1
+  RewriteRule ^resimmap.xml$ map/resimmap.php
+  RewriteRule ^index.xml$ map/index.php
+  RewriteRule ^404.html$ 404.php
+  RewriteRule ^yeni-porno-videolar-([0-9]+).html new.php?page=$1
+  RewriteRule ^yorumlar-([0-9]+).html comment.php?page=$1
+  RewriteRule ^populer-porno-videolar-([0-9]+).html popular.php?page=$1
+  RewriteRule ^rastgele-porno-videolar-([0-9]+).html rand.php?page=$1
+  RewriteRule ^porn-comments-([0-9]+).html comment.php?page=$1
+  RewriteRule ^kanal/(.*)-([0-9]+).html category.php?seo=$1&page=$2
+  RewriteRule ^kanal/(.*).html category.php?seo=$1
+  RewriteRule ^porno/(.*).html watch.php?seo=$1
+  RewriteRule ^videolar/(.*).html tags.php?seo=$1
+  RewriteRule ^pornoizle\-(.*)\.mp4$ lib/izle.php?id=$1 [L,NC]
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Suppress or force the "www." at the beginning of URLs
+# ----------------------------------------------------------------------
+
+# The same content should never be available under two different URLs -
+# especially not with and without "www." at the beginning, since this can cause
+# SEO problems (duplicate content). Thats why you should choose one of the
+# alternatives and redirect the other one.
+
+# By default option 1 (no "www.") is activated.
+# no-www.org/faq.php?q=class_b
+
+# If youd prefer to use option 2, just comment out all option 1 lines
+# and uncomment option 2.
+
+# IMPORTANT: NEVER USE BOTH RULES AT THE SAME TIME!
+
+# ----------------------------------------------------------------------
+
+# Option 1:
+# Rewrite "www.example.com -> example.com".
+
+
+# ----------------------------------------------------------------------
+
+# Option 2:
+# Rewrite "example.com -> www.example.com".
+# Be aware that the following rule might not be a good idea if you use "real"
+# subdomains for certain parts of your website.
+
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{HTTPS} !=on
+#   RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+#   RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>
+
+
+# ----------------------------------------------------------------------
+# Built-in filename-based cache busting
+# ----------------------------------------------------------------------
+
+# If you are not using the build script to manage your filename version revving,
+# you might want to consider enabling this, which will route requests for
+# `/css/style.20110203.css` to `/css/style.css`.
+
+# To understand why this is important and a better idea than all.css?v1231,
+# please refer to the bundled documentation about `.htaccess`.
+
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{REQUEST_FILENAME} !-f
+#   RewriteCond %{REQUEST_FILENAME} !-d
+#   RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+# </IfModule>
+
+
+# ----------------------------------------------------------------------
+# Prevent SSL cert warnings
+# ----------------------------------------------------------------------
+
+# Rewrite secure requests properly to prevent SSL cert warnings, e.g. prevent
+# https://www.example.com when your cert only allows https://secure.example.com
+
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{SERVER_PORT} !^443
+#   RewriteRule ^ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
+# </IfModule>
+
+
+# ----------------------------------------------------------------------
+# Prevent 404 errors for non-existing redirected folders
+# ----------------------------------------------------------------------
+
+# without -MultiViews, Apache will give a 404 for a rewrite if a folder of the
+# same name does not exist.
+# webmasterworld.com/apache/3808792.htm
+
+
+
+# ----------------------------------------------------------------------
+# Custom 404 page
+# ----------------------------------------------------------------------
+
+# You can add custom pages to handle 500 or 403 pretty easily, if you like.
+# If you are hosting your site in subdirectory, adjust this accordingly
+#    e.g. ErrorDocument 404 /subdir/404.html
+ErrorDocument 404 /404.html
+
+
+# ----------------------------------------------------------------------
+# UTF-8 encoding
+# ----------------------------------------------------------------------
+
+# Use UTF-8 encoding for anything served text/plain or text/html
+# ----------------------------------------------------------------------
+
+# To avoid displaying the exact version number of Apache being used, add the
+# following to httpd.conf (it will not work in .htaccess):
+# ServerTokens Prod
+
+# "-Indexes" will have Apache block users from browsing folders without a
+# default document Usually you should leave this activated, because you
+# shouldnt allow everybody to surf through every folder on your server (which
+# includes rather private places like CMS system folders).
+# Block access to "hidden" directories or files whose names begin with a
+# period. This includes directories used by version control systems such as
+# Subversion or Git.
+
+# Block access to backup and source files. These files may be left by some
+# text/html editors and pose a great security danger, when anyone can access
+# them.
+# using a commercial web host, contact the administrators for assistance in
+# doing this. Not all servers allow local php.ini files, and they should
+# include all PHP configurations (not just this one), or you will effectively
+# reset everything to PHP defaults. Consult www.php.net for more detailed
+# information about setting PHP directives.
+
+# php_flag register_globals Off
+
+# Rename session cookie to something else, than PHPSESSID
+# php_value session.name sid
+
+# Disable magic quotes (This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.)
+# php_flag magic_quotes_gpc Off
+
+# Do not show you are using PHP
+# Note: Move this line to php.ini since it wont work in .htaccess
+
+# Level of log detail - log all errors
+# php_value error_reporting -1
+
+# Write errors to log file
+# php_flag log_errors On
+
+# Do not display errors in browser (production - Off, development - On)
+# php_flag display_errors Off
+
+# Do not display startup errors (production - Off, development - On)
+# php_flag display_startup_errors Off
+
+# Format errors in plain text
+# Note: Leave this setting On for xdebugs var_dump() output
+# php_flag html_errors Off
+
+# Show multiple occurrence of error
+# php_flag ignore_repeated_errors Off
+
+# Show same errors from different sources
+# php_flag ignore_repeated_source Off
+
+# Size limit for error messages
+# php_value log_errors_max_len 1024
+# Dont precede error with string (doesnt accept empty string, use whitespace if you need)
+# php_value error_prepend_string " "
+
+# Dont prepend to error (doesnt accept empty string, use whitespace if you need)
+# php_value error_append_string " "
+
+# Increase cookie security
